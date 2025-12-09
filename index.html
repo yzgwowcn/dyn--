@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YZG 的个人空间 | My Hub</title>
+    <title>YZG 的小站 | My Hub</title>
     <!-- 引入 Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- 引入 Lucide 图标库 -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* 核心修改：将动态流光渐变背景应用到 body 
-           使用了 Blue(蓝色) -> Purple(紫色) -> Cyan(青色) 的科技感配色
+        /* 动态流光渐变背景
+           Blue(蓝色) -> Purple(紫色) -> Cyan(青色) 
         */
         body {
             background: linear-gradient(-45deg, #2563eb, #7c3aed, #0891b2, #2563eb);
@@ -24,7 +24,7 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* 玻璃拟态容器增强，为了在深色鲜艳背景上更清晰 */
+        /* 玻璃拟态容器 */
         .glass-effect {
             background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(24px);
@@ -75,9 +75,9 @@
         
         <!-- 头部区域 -->
         <div class="text-center mb-8">
-            <!-- YZG 科技感 Logo -->
+            <!-- YZG  Logo -->
             <div class="w-24 h-24 mx-auto mb-4 relative flex items-center justify-center">
-                <!-- Logo 外部动画光圈，颜色调亮以适应新背景 -->
+                <!-- Logo 外部动画光圈 -->
                 <div class="absolute inset-0 border-4 border-blue-400/30 rounded-full animate-pulse"></div>
                 <div class="absolute inset-2 border-2 border-blue-500 rounded-full border-dashed animate-[spin_10s_linear_infinite]"></div>
                 <div class="w-full h-full bg-slate-900 rounded-full flex items-center justify-center shadow-lg z-10">
@@ -86,7 +86,7 @@
             </div>
             
             <h1 class="text-2xl font-bold mb-1 text-slate-800">YZG 的个人空间</h1>
-            <p class="text-sm text-slate-500">四川大学 | 开发者 | 探索者</p>
+            <p class="text-sm text-slate-500">四川大学 | 空天科学与工程学院</p>
         </div>
 
         <!-- 导航链接区域 -->
@@ -129,7 +129,7 @@
             </div>
 
             <!-- 第二栏：Bilibili -->
-            <a href="https://space.bilibili.com/你的UID" target="_blank" class="hover-card bg-white border border-slate-200 p-4 rounded-2xl flex items-center space-x-4 cursor-pointer hover:border-pink-300 group">
+            <a href="https://space.bilibili.com/351754479" target="_blank" class="hover-card bg-white border border-slate-200 p-4 rounded-2xl flex items-center space-x-4 cursor-pointer hover:border-pink-300 group">
                 <div class="bg-pink-50 p-3 rounded-xl text-pink-500 group-hover:bg-pink-500 group-hover:text-white transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
                         <rect width="20" height="16" x="2" y="4" rx="4"/>
@@ -146,7 +146,7 @@
             </a>
 
             <!-- 第三栏：GitHub -->
-            <a href="https://github.com/你的用户名" target="_blank" class="hover-card bg-white border border-slate-200 p-4 rounded-2xl flex items-center space-x-4 cursor-pointer hover:border-gray-400 group">
+            <a href="https://github.com/yzgwowcn" target="_blank" class="hover-card bg-white border border-slate-200 p-4 rounded-2xl flex items-center space-x-4 cursor-pointer hover:border-gray-400 group">
                 <div class="bg-gray-100 p-3 rounded-xl text-gray-700 group-hover:bg-slate-800 group-hover:text-white transition-colors">
                     <i data-lucide="github"></i>
                 </div>
@@ -156,8 +156,8 @@
                 </div>
             </a>
 
-            <!-- 第四栏：邮箱 (恢复为简洁风格，但保留 col-span-2 全宽布局) -->
-            <a href="mailto:your-email@example.com" class="col-span-1 md:col-span-2 hover-card bg-white border border-slate-200 p-4 rounded-2xl flex items-center space-x-4 cursor-pointer hover:border-purple-300 group">
+            <!-- 第四栏：邮箱-->
+            <a href="mailto:yzgwowcn@gmail.com" class="col-span-1 md:col-span-2 hover-card bg-white border border-slate-200 p-4 rounded-2xl flex items-center space-x-4 cursor-pointer hover:border-purple-300 group">
                 <div class="bg-purple-50 p-3 rounded-xl text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-colors">
                     <i data-lucide="mail"></i>
                 </div>
@@ -173,7 +173,7 @@
 
         <!-- 页脚 -->
         <div class="mt-10 text-center text-xs text-slate-500">
-            <p class="mb-2">© 2024 YZG. All Rights Reserved.</p>
+            <p class="mb-2">© 2025-2026 YZG. All Rights Reserved.</p>
             <button onclick="openModal()" class="text-slate-500 hover:text-blue-600 transition-colors font-medium border-b border-transparent hover:border-blue-600">
                 关于
             </button>
@@ -233,3 +233,4 @@
     </script>
 </body>
 </html>
+
