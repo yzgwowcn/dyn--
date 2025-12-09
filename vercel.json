@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/aero",
+      "destination": "https://aeroengine-ibm53whut-systemwow64s-projects.vercel.app/"
+    },
+    {
+      "source": "/aero/:path*",
+      "destination": "https://aeroengine-ibm53whut-systemwow64s-projects.vercel.app/:path*"
+    }
+  ]
+}
