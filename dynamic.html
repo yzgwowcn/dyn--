@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YZG 的个人空间 | My Hub</title>
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 Lucide 图标库 -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* 核心修改：将动态流光渐变背景应用到 body 
+           使用了 Blue(蓝色) -> Purple(紫色) -> Cyan(青色) 的科技感配色
+        */
+        body {
+            background: linear-gradient(-45deg, #2563eb, #7c3aed, #0891b2, #2563eb);
+            background-size: 400% 400%;
+            animation: gradient 10s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 玻璃拟态容器增强，为了在深色鲜艳背景上更清晰 */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .hover-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* 隐藏滚动条但保留功能 */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* 工具列表展开动画 */
+        #tools-list {
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #tools-list.expanded {
+            max-height: 500px;
+            opacity: 1;
+        }
+        
+        /* 箭头旋转动画 */
+        .arrow-icon {
+            transition: transform 0.3s ease;
+        }
+        .arrow-icon.rotate {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 font-sans text-slate-800">
+
+    <div class="glass-effect w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden p-6 md:p-10 relative">
+        
+        <!-- 头部区域 -->
+        <div class="text-center mb-8">
+            <!-- YZG 科技感 Logo -->
+            <div class="w-24 h-24 mx-auto mb-4 relative flex items-center justify-center">
+                <!-- Logo 外部动画光圈，颜色调亮以适应新背景 -->
+                <div class="absolute inset-0 border-4 border-blue-400/30 rounded-full animate-pulse"></div>
+                <div class="absolute inset-2 border-2 border-blue-500 rounded-full border-dashed animate-[spin_10s_linear_infinite]"></div>
+                <div class="w-full h-full bg-slate-900 rounded-full flex items-center justify-center shadow-lg z-10">
+                    <span class="text-2xl font-mono font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 tracking-widest">YZG</span>
+                </div>
+            </div>
+            
+            <h1 class="text-2xl font-bold mb-1 text-slate-800">YZG 的个人空间</h1>
+            <p class="text-sm text-slate-500">四川大学 | 开发者 | 探索者</p>
+        </div>
+
+        <!-- 导航链接区域 -->
+        <div class="grid gap-4 grid-cols-1 md:grid-cols-2">
+            
+            <!-- 第一栏：在线工具集 (可展开) -->
+            <div class="col-span-1 md:col-span-2 bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300 shadow-sm hover:shadow-md hover:border-blue-300 group">
+                <div class="p-4 flex items-center justify-between cursor-pointer" onclick="toggleTools()">
+                    <div class="flex items-center space-x-4">
+                        <div class="bg-blue-50 p-3 rounded-xl text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                            <i data-lucide="layout-grid"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-800">在线工具集</h3>
+                            <p class="text-xs text-slate-500">常用开发工具与演示项目</p>
+                        </div>
+                    </div>
+                    <i data-lucide="chevron-down" class="arrow-icon text-slate-400"></i>
+                </div>
+                
+                <div id="tools-list" class="bg-slate-50 border-t border-slate-100">
+                    <div class="p-3 grid gap-2">
+                        <a href="https://your-project-1.vercel.app" target="_blank" class="flex items-center p-3 rounded-lg hover:bg-white hover:shadow-sm transition-all text-slate-600 hover:text-blue-600">
+                            <i data-lucide="zap" class="w-4 h-4 mr-3"></i>
+                            <span class="font-medium">项目演示 A (Demo)</span>
+                            <i data-lucide="external-link" class="w-3 h-3 ml-auto opacity-50"></i>
+                        </a>
+                        <a href="https://your-project-2.vercel.app" target="_blank" class="flex items-center p-3 rounded-lg hover:bg-white hover:shadow-sm transition-all text-slate-600 hover:text-blue-600">
+                            <i data-lucide="code-2" class="w-4 h-4 mr-3"></i>
+                            <span class="font-medium">代码片段库</span>
+                            <i data-lucide="external-link" class="w-3 h-3 ml-auto opacity-50"></i>
+                        </a>
+                        <a href="https://your-project-3.vercel.app" target="_blank" class="flex items-center p-3 rounded-lg hover:bg-white hover:shadow-sm transition-all text-slate-600 hover:text-blue-600">
+                            <i data-lucide="file-text" class="w-4 h-4 mr-3"></i>
+                            <span class="font-medium">个人文档 (Docs)</span>
+                            <i data-lucide="external-link" class="w-3 h-3 ml-auto opacity-50"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第二栏：Bilibili -->
+            <a href="https://space.bilibili.com/你的UID" target="_blank" class="hover-card bg-white border border-slate-200 p-4 rounded-2xl flex items-center space-x-4 cursor-pointer hover:border-pink-300 group">
+                <div class="bg-pink-50 p-3 rounded-xl text-pink-500 group-hover:bg-pink-500 group-hover:text-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+                        <rect width="20" height="16" x="2" y="4" rx="4"/>
+                        <path d="m8 4 2-2"/>
+                        <path d="m16 4-2-2"/>
+                        <circle cx="9" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+                        <circle cx="15" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg text-slate-800">Bilibili</h3>
+                    <p class="text-xs text-slate-500">查看我的视频动态</p>
+                </div>
+            </a>
+
+            <!-- 第三栏：GitHub -->
+            <a href="https://github.com/你的用户名" target="_blank" class="hover-card bg-white border border-slate-200 p-4 rounded-2xl flex items-center space-x-4 cursor-pointer hover:border-gray-400 group">
+                <div class="bg-gray-100 p-3 rounded-xl text-gray-700 group-hover:bg-slate-800 group-hover:text-white transition-colors">
+                    <i data-lucide="github"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg text-slate-800">GitHub</h3>
+                    <p class="text-xs text-slate-500">开源项目与代码</p>
+                </div>
+            </a>
+
+            <!-- 第四栏：邮箱 (恢复为简洁风格，但保留 col-span-2 全宽布局) -->
+            <a href="mailto:your-email@example.com" class="col-span-1 md:col-span-2 hover-card bg-white border border-slate-200 p-4 rounded-2xl flex items-center space-x-4 cursor-pointer hover:border-purple-300 group">
+                <div class="bg-purple-50 p-3 rounded-xl text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                    <i data-lucide="mail"></i>
+                </div>
+                <div class="flex-1">
+                    <h3 class="font-bold text-lg text-slate-800">Email</h3>
+                    <p class="text-xs text-slate-500">发送邮件进行商务合作或学术交流</p>
+                </div>
+                <!-- 发送图标 -->
+                <i data-lucide="send" class="w-5 h-5 text-slate-300 group-hover:text-purple-500 group-hover:translate-x-1 transition-all"></i>
+            </a>
+
+        </div>
+
+        <!-- 页脚 -->
+        <div class="mt-10 text-center text-xs text-slate-500">
+            <p class="mb-2">© 2024 YZG. All Rights Reserved.</p>
+            <button onclick="openModal()" class="text-slate-500 hover:text-blue-600 transition-colors font-medium border-b border-transparent hover:border-blue-600">
+                关于
+            </button>
+        </div>
+    </div>
+
+    <!-- 关于模态框 (Modal) -->
+    <div id="aboutModal" class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <!-- 遮罩层 -->
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeModal()"></div>
+        
+        <!-- 内容卡片 -->
+        <div class="bg-white w-full max-w-sm mx-4 rounded-2xl p-6 shadow-2xl transform scale-95 transition-transform duration-300 relative z-10">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 text-blue-600">
+                    <i data-lucide="info" class="w-8 h-8"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-slate-800 mb-2">关于我</h2>
+                <div class="w-16 h-1 bg-blue-500 rounded-full mx-auto mb-4"></div>
+                <p class="text-lg text-slate-700 font-medium">YZG</p>
+                <p class="text-slate-500 mt-1">Sichuan University</p>
+                
+                <button onclick="closeModal()" class="mt-8 bg-slate-900 text-white px-6 py-2 rounded-full hover:bg-slate-800 transition-colors w-full">
+                    关闭
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 初始化图标
+        lucide.createIcons();
+
+        // 工具栏展开/折叠逻辑
+        function toggleTools() {
+            const list = document.getElementById('tools-list');
+            const arrow = document.querySelector('.arrow-icon');
+            
+            list.classList.toggle('expanded');
+            arrow.classList.toggle('rotate');
+        }
+
+        // 模态框逻辑
+        function openModal() {
+            const modal = document.getElementById('aboutModal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.querySelector('div.transform').classList.remove('scale-95');
+            modal.querySelector('div.transform').classList.add('scale-100');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('aboutModal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.querySelector('div.transform').classList.remove('scale-100');
+            modal.querySelector('div.transform').classList.add('scale-95');
+        }
+    </script>
+</body>
+</html>
